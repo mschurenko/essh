@@ -3,6 +3,7 @@ from __future__ import print_function
 from distutils.spawn import find_executable
 from os.path import isfile, getmtime
 from os import execv
+from six.moves import input
 
 import pickle
 import re
@@ -14,7 +15,6 @@ import click
 
 CACHE_DIR = '/tmp/essh_cache'
 CACHE_TIME_SECONDS = 300
-
 
 def ssh(user, ip, cmd):
     ssh_path = find_executable("ssh")
@@ -116,7 +116,7 @@ def cli(user, host_pattern, cmd):
                 for idx, host in enumerate(sorted_hosts):
                     click.echo("{}> {} | {}".format(idx, host[0], host[1]))
                 try:
-                    user_input = int(raw_input(':'))
+                    user_input = int(input(':'))
                     if user_input >= 0 and user_input < len(sorted_hosts):
                         ssh(user, sorted_hosts[user_input][1], cmd)
                         break
