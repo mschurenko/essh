@@ -39,7 +39,7 @@ def get_instances():
             use_cache = False
 
     if use_cache:
-        with open(CACHE_DIR, 'r') as c:
+        with open(CACHE_DIR, 'rb') as c:
             instances = pickle.load(c)
     else:
         instances = []
@@ -52,7 +52,7 @@ def get_instances():
                 for i in r['Instances']:
                     instances.append(i)
 
-        with open(CACHE_DIR, 'w') as c:
+        with open(CACHE_DIR, 'wb') as c:
             pickle.dump(instances, c)
 
     return instances
