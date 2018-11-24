@@ -13,5 +13,6 @@ setup(
     install_requires=[
         'boto3>=1.7.27',
         'click>=6.7',
+        'six>=1.11.0',
     ],
 )
