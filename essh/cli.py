@@ -1,20 +1,22 @@
 from __future__ import print_function
 
 from distutils.spawn import find_executable
-from os.path import isfile, getmtime
 from os import execv
-from six.moves import input
-
+from os.path import isfile, getmtime, expanduser
+from os.path import join as pjoin
 import pickle
 import re
 import sys
 import time
 
+from six.moves import input
+
 import boto3
 import click
 
-CACHE_DIR = '/tmp/essh_cache'
+CACHE_DIR = pjoin(expanduser('~'), '.essh_cache')
 CACHE_TIME_SECONDS = 300
+
 
 def ssh(user, ip, cmd):
     ssh_path = find_executable("ssh")

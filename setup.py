@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='essh',
-    version='0.1.0',
+    version='0.1.1',
     author='Matt Schurenko',
     author_email='matt.schurenko@gmail.com',
     packages=['essh'],
